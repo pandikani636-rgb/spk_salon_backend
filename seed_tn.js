@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
 
 // Need to resolve path to .env and models since we are running from scratch dir
 import path from 'path';
