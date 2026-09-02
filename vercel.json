@@ -1,4 +1,5 @@
 {
+  "name": "apex-backend",
   "version": 2,
   "builds": [
     {
