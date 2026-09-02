@@ -79,6 +79,15 @@ app.use('/api/v1/content', contentRoutes);
 app.use('/api/v1/upload', uploadRoutes);
 app.use('/api/v1/leaves', leaveRoutes);
 
+// Default Root Route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to the Apex Salon Booking API',
+    status: 'Running'
+  });
+});
+
 // Serve static uploads
 const __dirname = path.resolve();
 if (process.env.VERCEL) {
