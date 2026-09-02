@@ -76,51 +76,12 @@ console.log("Allowed Origins:", allowedOrigins);
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Requests without Origin
-      // Example: Postman, server-to-server
-      if (!origin) {
-        return callback(null, true);
-      }
-
-      const requestOrigin = normalizeOrigin(origin);
-
-      // Development
-      if (NODE_ENV !== "production") {
-        return callback(null, true);
-      }
-
-      // Production
-      if (allowedOrigins.includes(requestOrigin)) {
-        return callback(null, true);
-      }
-
-      console.error("CORS blocked origin:", requestOrigin);
-
-      return callback(null, false);
+      // Allow all origins for the deployment to prevent CORS blocks
+      return callback(null, true);
     },
-
     credentials: true,
-
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-    ],
-
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-    ],
-
-    exposedHeaders: [
-      "Content-Length",
-      "Content-Type",
-    ],
-
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
     optionsSuccessStatus: 204,
   })
 );
