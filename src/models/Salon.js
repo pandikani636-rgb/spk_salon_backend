@@ -60,7 +60,7 @@ const salonSchema = new mongoose.Schema(
     },
     rejectionReason: String,
   },
-  { timestamps: true }
+  { timestamps: true, collection: 'salons' }
 );
 
 export default mongoose.model('Salon', salonSchema);
